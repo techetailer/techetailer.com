@@ -1,0 +1,86 @@
+
+/* ********************************************************************************************
+	Basic zoom styles
+*********************************************************************************************** */
+
+/* This is the moving lens square underneath the mouse pointer. */
+.cloud-zoom-lens {
+	border:1px solid #ccc;
+	margin:-1px;
+	background-color:#fff;
+	cursor:move;
+}
+
+/* This is the zoom window. */
+.cloud-zoom-big {
+	border:1px solid #E4E4E4;
+	overflow:hidden;
+	right: 0;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+/* This is the loading message. */
+.cloud-zoom-loading {
+    color:white;
+    background:#222;
+    padding:0.25em;
+    border:1px solid #000;
+}
+
+#wrap {
+	z-index:0 !important;
+	position: initial !important;
+}
+
+/* Zoom position: "inside" */
+.product-image .mousetrap {
+	z-index:100 !important;
+	width:100% !important;
+	height:100% !important;
+}
+.zoom-inside #wrap { overflow:hidden; }
+
+/* No borders if zoom position is "inside" */
+.zoom-inside .cloud-zoom-big { border:none; }
+
+/* Display images without Cloud Zoom */
+
+/* Hide zoom area */
+.simple-mode .cloud-zoom-big,
+.simple-mode .cloud-zoom-lens { display:none !important; }
+.simple-mode .cloud-zoom-lens { cursor:default !important; }
+
+
+/* ********************************************************************************************
+	Zoom button (enlarge the main image)
+*********************************************************************************************** */
+
+.zoom-btn-small {
+	position:absolute;
+	right:4px;
+	bottom:4px;
+	padding:0 1em;
+	line-height:2.6666em;
+	z-index:100;
+	background-color:#fff;
+	background-color:rgba(255,255,255, 0.7);
+	color:#333;
+}
+.zoom-btn-small:hover { background-color:#fff; }
+
+/* Use lightbox without cloud zoom */
+.zoom-btn-large {
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	padding:0;
+	z-index:100;
+	cursor:pointer;
+	
+	text-indent:-9999px;
+	overflow:hidden;
+}
+.zoom-btn-large:hover { background-color:rgba(255,255,255, 0.15); }

@@ -1,0 +1,160 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+<?php
+	$themeGridCssPath = Mage::getBaseDir()."/skin/frontend/neighborhood/default/css/override/peer_grid_".Mage::app()->getStore()->getCode().".css";
+	$themelayoutCssPath = Mage::getBaseDir()."/skin/frontend/neighborhood/default/css/override/peer_layout_".Mage::app()->getStore()->getCode().".css";
+?>
+<?php if(file_exists($themeGridCssPath) && file_exists($themelayoutCssPath)) {
+		$storeCss = Mage::app()->getStore()->getCode();
+	}
+	else {
+		$storeCss = 'default';
+	}
+?>
+
+<link href='<?php echo $this->getSkinUrl('css/override/peer_grid_'.$storeCss.'.css');?>' rel='stylesheet' type='text/css'/>
+<link href='<?php echo $this->getSkinUrl('css/override/peer_layout_'.$storeCss.'.css');?>' rel='stylesheet' type='text/css'/>
+
+<link href='<?php echo $this->getSkinUrl('css/themeoption.css.php'); echo '?store='.Mage::app()->getStore()->getCode(); ?>' rel='stylesheet' type='text/css'/>
+
+<?php
+if(Mage::getStoreConfig('mygeneral/extra_settings/customcss')){ ?>
+	<link href='<?php echo $this->getSkinUrl('css/custom.css'); ?>' rel='stylesheet' type='text/css'/>
+<?php } ?>
+
+<script type="text/javascript">
+	
+	function successMessage(message,message1,message2,message3)
+		{
+		    jQuery('body').append('<div class="alert"><div class="alert-inner"></div></div>');
+		    var $alert = jQuery('.alert');
+		    var $alertInner = jQuery('.alert-inner');
+		    $alert.fadeIn(400);
+                    $alertInner.html(message).append('<button class="close"><i class="fa fa-times"></i></button><div class="alertcontent"><a class="close cart" href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Go to Cart') ?></a><a class="close continue"><?php echo $this->__('Continue Shopping') ?></a></div>');
+		    jQuery('.close').click(function () {
+			$alert.fadeOut(400);
+		    });
+		    $alert.fadeIn('400', function () {
+			setTimeout(function () {
+			    $alert.fadeOut('400', function () {
+				jQuery(this).fadeOut(400, function(){ jQuery(this).detach(); })
+			    });
+			}, 10000)
+		    });
+		}
+</script>
+
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="<?php echo $this->getSkinUrl('ie/respond.min.js'); ?>"></script>
+<![endif]-->
+
+<?php
+$titlefont = Mage::getStoreConfig('themecolor/themefont/titlefont');
+$bodyfont = Mage::getStoreConfig('themecolor/themefont/bodyfont');
+$sectiontitle_font = Mage::getStoreConfig('themecolor/themefont/sectiontitle_font');
+$topmenu_fonts = Mage::getStoreConfig('themecolor/menu/topmenu_fonts');
+$submenu_fonts = Mage::getStoreConfig('themecolor/menu/submenu_fonts');
+$menu_fonts = Mage::getStoreConfig('themecolor/menu/menu_fonts');
+$responsive_topmenu_font_family = Mage::getStoreConfig('themecolor/responsivemenu/responsive_topmenu_font_family');
+$responsive_submenu_font_family = Mage::getStoreConfig('themecolor/responsivemenu/responsive_submenu_font_family');
+$sidebar_title_fonts = Mage::getStoreConfig('themecolor/sidebar/sidebar_title_fonts');
+$button_fonts = Mage::getStoreConfig('themecolor/product_list/button_fonts');
+$productname_fonts = Mage::getStoreConfig('themecolor/product_list/productname_fonts');
+$product_price_fonts = Mage::getStoreConfig('themecolor/product_list/product_price_fonts');
+?>
+
+
+
+<?php if(isset($titlefont) && $titlefont != null && $titlefont != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $titlefont); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($bodyfont) && $bodyfont != null && $bodyfont != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $bodyfont); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($sectiontitle_font) && $sectiontitle_font != null && $sectiontitle_font != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $sectiontitle_font); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($topmenu_fonts) && $topmenu_fonts != null && $topmenu_fonts != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $topmenu_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($submenu_fonts) && $submenu_fonts != null && $submenu_fonts != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $submenu_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($menu_fonts) && $menu_fonts != null && $menu_fonts != '--select--')  {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $menu_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($responsive_topmenu_font_family) && $responsive_topmenu_font_family != null && $responsive_topmenu_font_family != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $responsive_topmenu_font_family); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($responsive_submenu_font_family) && $responsive_submenu_font_family != null && $responsive_submenu_font_family != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $responsive_submenu_font_family); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($sidebar_title_fonts) && $sidebar_title_fonts != null && $sidebar_title_fonts != '--select--')  {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $sidebar_title_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($button_fonts) && $button_fonts != null && $button_fonts != '--select--')  {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $button_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($productname_fonts) && $productname_fonts != null && $productname_fonts != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $productname_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>
+
+<?php if(isset($product_price_fonts) && $product_price_fonts != null && $product_price_fonts != '--select--') {  ?>
+<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $product_price_fonts); ?>' rel='stylesheet' type='text/css'>
+<?php } ?>

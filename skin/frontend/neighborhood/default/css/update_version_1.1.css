@@ -1,0 +1,35 @@
+
+
+/* ********************************************************************************************
+    Update Version 1.1
+*********************************************************************************************** */
+
+/* ********************************************************************************************
+	Sidebar
+*********************************************************************************************** */
+
+/* Filters current */
+.block-layered-nav .currently + .actions {margin-bottom: 35px;}
+
+
+/* ********************************************************************************************
+	Category Page
+*********************************************************************************************** */
+
+/* Subcategories Category */
+.subcategories .item{width:23%;margin: 0 1%;text-align: center;float: left;margin-bottom: 4%;}
+.subcategories .product-name{font-size: 16px;font-weight: bold;}
+.subcategories .item:nth-child(4n+1) { clear:left; }
+.category-main .category-image{display: none;}
+.subcategories .category-image {margin-bottom: 10px;display: block;}
+
+
+/* ********************************************************************************************
+	Sale New Label
+*********************************************************************************************** */
+
+/* Lable Marging Left Side */
+#side-nav li a span.category-label{margin-left: 5px;}
+#side-nav li a span.category-label:before{display: none;}
+
+
