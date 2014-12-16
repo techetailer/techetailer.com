@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SM_Imagecc>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core/>
+                <Mage_Payment/>
+                <!--<Mage_Checkout/>-->
+                <!--<Mage_Paypal/>-->
+            </depends>
+        </SM_Imagecc>
+    </modules>
+</config>

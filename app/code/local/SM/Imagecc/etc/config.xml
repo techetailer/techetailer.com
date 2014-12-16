@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SM_Imagecc>
+            <version>0.1.0</version>
+        </SM_Imagecc>
+    </modules>
+    <global>
+        <blocks>
+            <my_module>
+                <class>SM_Imagecc_Block</class>
+            </my_module>
+            <payment>
+                <rewrite>
+                    <form_ccsave>SM_Imagecc_Block_Form_Cc</form_ccsave>
+                </rewrite>
+            </payment>
+        </blocks>
+
+    </global>
+</config>
